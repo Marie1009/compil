@@ -79,6 +79,7 @@ Main    main\(\)
 {Name}   {
         printf("tNom\n");
         return tNom ;
+
         }    
 {Main}  {
             printf("tMain\n");
@@ -88,6 +89,7 @@ Main    main\(\)
 
 {Numb} {
         printf("tNb\n");
+        yylval.int = atoi(yytext);
         return tNb;
         }
 
@@ -109,22 +111,26 @@ Main    main\(\)
 
     /* ---------------------------------------------- */
 
+
 "\n"    {
         printf("tNL\n");
-        }
+        } 
 
 ";"     {
         printf("tEndL\n");
+        return tEndL;
         }
 
 %%
-
+/*
 int yywrap(void)
 {
     return 1;
 }
 
+
 int main(void)
 {
     yylex();
 }
+*/

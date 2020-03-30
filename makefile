@@ -1,4 +1,3 @@
-bison -d -v -t comp.y
-flex -d comp.l
-gcc lex.yy.c comp.tab.c -o compiler
-
+bison -d comp.y
+flex comp.l
+gcc lex.yy.c comp.tab.c -o compiler symboltable.c 

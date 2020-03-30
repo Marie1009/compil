@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include <symboltable.h>
 
 int yylex();
 
@@ -92,7 +93,7 @@ Decl:
     Type Vars;
 
 Vars:
-    tNom
+    tNom 
     | Aff
     | tNom tComm tSpace Vars
     | Aff tComm tSpace Vars

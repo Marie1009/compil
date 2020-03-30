@@ -903,24 +903,25 @@ YY_RULE_SETUP
 case 19:
 /* rule 19 can match eol */
 YY_RULE_SETUP
-#line 112 "comp.l"
+#line 113 "comp.l"
 {
         printf("tNL\n");
-        }
+        } 
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 116 "comp.l"
+#line 117 "comp.l"
 {
         printf("tEndL\n");
+        return tEndL;
         }
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 120 "comp.l"
+#line 122 "comp.l"
 ECHO;
 	YY_BREAK
-#line 924 "lex.yy.c"
+#line 925 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1925,16 +1926,17 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 120 "comp.l"
+#line 122 "comp.l"
 
-
+/*
 int yywrap(void)
 {
     return 1;
 }
 
+
 int main(void)
 {
     yylex();
 }
-
+*/
