@@ -78,6 +78,7 @@ Main    main\(\)
 
 {Name}   {
         printf("tNom\n");
+        yylval.str = yytext;
         return tNom ;
 
         }    
@@ -89,7 +90,7 @@ Main    main\(\)
 
 {Numb} {
         printf("tNb\n");
-        yylval.int = atoi(yytext);
+        yylval.nb = atoi(yytext);
         return tNb;
         }
 
@@ -102,18 +103,15 @@ Main    main\(\)
     /* -- attention ne pas mettre de return ici !! --*/
 
 {Tab}    {
-        printf("tTAB\n");
         }
 
 {Space}  {
-        printf("tSpace\n");
         }
 
     /* ---------------------------------------------- */
 
 
 "\n"    {
-        printf("tNL\n");
         } 
 
 ";"     {

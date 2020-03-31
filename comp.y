@@ -3,14 +3,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-#include <symboltable.h>
+#include <string.h>
+#include "symboltable.h"
 
 int yylex();
 
+int is_const;
+char * name_var;
 
 void yyerror(const char *str)
 {
-        fprintf(stderr,"error: %s\n",str);
+        fprintf(stderr,"BIG error: %s\n",str);
 }
  
 int yywrap()
@@ -49,21 +52,20 @@ int yywrap()
 %%
 Input:
       Vide
-    | tInt tSpace tMain Body
+    | tInt tMain Body
     ;
 
 Vide: 
     ;
 
 Body:
-    tNL tCBrO Lines tCBrC
-    |tCBrO tNL Lines tCBrC;
+    tCBrO {plus_depth();} Lines tCBrC {minus_depth();}
+    ;
 
 
 Lines: 
     Vide
-    | L
-    | L tNL Lines
+    | L Lines
     ;
 
 L:
@@ -73,7 +75,7 @@ L:
     ;
 
 Aff:
-    tNom tEq Expression {printf("affectation\n");}
+    tNom tEq Expression {strcpy(name_var,$1);  printf("affectation\n");}
     ;
 
 Expression:
@@ -90,20 +92,15 @@ Print:
     ;
 
 Decl:
-    Type Vars;
+    tInt Vars { is_const = 0;}
+    | tConst Vars { is_const = 1;};
 
 Vars:
-    tNom 
-    | Aff
-    | tNom tComm tSpace Vars
-    | Aff tComm tSpace Vars
+    tNom {add_symbol($1,is_const,0);}
+    | Aff {add_symbol(name_var,is_const,1);}
+    | tNom tComm {add_symbol($1,is_const,0);} Vars 
+    | Aff tComm {add_symbol(name_var,is_const,1);} Vars
     ;
-
-Type:
-    tInt
-    | tConst
-    ;
-
 
 
 %%

@@ -857,12 +857,14 @@ YY_RULE_SETUP
 #line 79 "comp.l"
 {
         printf("tNom\n");
+        yylval.str = yytext;
         return tNom ;
+
         }    
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 83 "comp.l"
+#line 85 "comp.l"
 {
             printf("tMain\n");
             return tMain;
@@ -870,15 +872,16 @@ YY_RULE_SETUP
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 89 "comp.l"
+#line 91 "comp.l"
 {
         printf("tNb\n");
+        yylval.nb = atoi(yytext);
         return tNb;
         }
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 94 "comp.l"
+#line 97 "comp.l"
 {
         printf("tComm\n");
         return tComm;
@@ -887,25 +890,22 @@ YY_RULE_SETUP
 /* -- attention ne pas mettre de return ici !! --*/
 case 17:
 YY_RULE_SETUP
-#line 102 "comp.l"
+#line 105 "comp.l"
 {
-        printf("tTAB\n");
         }
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 106 "comp.l"
+#line 108 "comp.l"
 {
-        printf("tSpace\n");
         }
 	YY_BREAK
 /* ---------------------------------------------- */
 case 19:
 /* rule 19 can match eol */
 YY_RULE_SETUP
-#line 113 "comp.l"
+#line 114 "comp.l"
 {
-        printf("tNL\n");
         } 
 	YY_BREAK
 case 20:

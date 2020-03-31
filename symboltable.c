@@ -2,21 +2,10 @@
 #include <string.h>
 #include "symboltable.h"
 
-typedef struct {
-	char * id;
-	int is_constant;
-	int is_init;
-	int depth;
-}symbol;
-
-
-
 symbol table[100];
 
 int global_depth = 0;
 int index_table = 0;
-
-
 
 
 int ask_symbol(char * id){
