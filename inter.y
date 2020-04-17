@@ -8,9 +8,6 @@
 
 int yylex();
 
-int is_const;
-char * name_var;
-
 void yyerror(const char *str)
 {
         fprintf(stderr,"BIG error: %s\n",str);
@@ -69,13 +66,8 @@ Lines:
     ;
 
 L:
-    Aff tEndL
-    |Print tEndL
-    |Decl tEndL
-    ;
-
-Aff:
-    tNom tEq Expression {strcpy(name_var,$1);  printf("affectation\n");}
+    Print tEndL
+    |Instance tEndL
     ;
 
 Expression:
@@ -91,16 +83,16 @@ Print:
     tPri tBrO tNom tBrC {printf("ligne print\n");}
     ;
 
-Decl:
-    tInt Vars { is_const = 0;}
-    | tConst Vars { is_const = 1;};
 
-Vars:
-    tNom {add_symbol($1,is_const,0);}
-    | Aff {add_symbol(name_var,is_const,1);}
-    | tNom tComm {add_symbol($1,is_const,0);} Vars 
-    | Aff tComm {add_symbol(name_var,is_const,1);} Vars
+Instance:
+    tInt tNom { add_symbol($2,0,0);}
+    | tConst tNom { add_symbol($2,1,0);}
+    | tNom tEq Expression {int ad=get_address($1);  printf("AFC %d %d\n",ad, $3);}
+    | tInt tNom tEq Expression {add_symbol($2,0,0); int ad=get_address($2);  printf("AFC %d %d\n",ad, $4);}
+    | tConst tNom tEq Expression {add_symbol($2,1,0); int ad=get_address($2);  printf("AFC %d %d\n",ad, $4);}
     ;
+
+
 
 
 %%

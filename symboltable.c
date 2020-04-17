@@ -4,9 +4,23 @@
 
 symbol table[100];
 
+int temp[300];
+
+
 int global_depth = 0;
 int index_table = 0;
 
+//fonction qui retourne l'adresse a ajouter \\ 
+
+int get_address(char * id){
+	x = ask_symbol(id);
+	if (x!=-1){
+		return x;
+	}else{
+		printf("ERREUR SYMBOLE %s INEXISTANT",id);
+		return -1;
+	}
+}
 
 int ask_symbol(char * id){
 	int i=0;
@@ -14,15 +28,15 @@ int ask_symbol(char * id){
 		i ++;
 	}
 	if (i == index_table){
-		return 0;
+		return -1;
 	}else{
-		return 1;
+		return i;
 	}
 }
 
 void add_symbol(char * id, int is_cons, int is_init ){
 
-	if (ask_symbol(id)== 0){
+	if (ask_symbol(id)== -1){
 
 		table[index_table].id = id;
 		table[index_table].is_constant = is_cons;
@@ -43,3 +57,11 @@ void minus_depth(){
 	global_depth --;
 }
 
+
+void pop_temp(){
+
+}
+
+void push_temp(){
+
+}
