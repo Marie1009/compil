@@ -5,12 +5,26 @@
 symbol table[100];
 
 int temp[300];
+int point_temp = 0;
 
 
 int global_depth = 0;
 int index_table = 0;
 
-//fonction qui retourne l'adresse a ajouter \\ 
+// verifier affectation constante autorisée
+// opérations asm
+
+int check_init(int ad){
+	if(ad == -1){
+		return -1;
+	}else{
+		if(table[ad].is_cons == 1){
+			return table[ad].is_init;
+		}else{
+			return 0;
+		}
+	}
+}
 
 int get_address(char * id){
 	x = ask_symbol(id);
@@ -54,14 +68,22 @@ void plus_depth(){
 }
 
 void minus_depth(){
+	//supprimer les var qui existent avant
+	for (int i = 0; i<index_table; i++){
+		if (table[i].depth == global_depth){
+			table[i].depth = -2; // on modifie la valeur de la profondeur en remontant pour "effacer" les variables 
+		}
+	}
 	global_depth --;
 }
 
 
-void pop_temp(){
-
+int pop(){
+	point_temp --;
+	return point_temp + 1000;
 }
 
-void push_temp(){
-
+int push(){
+	point_temp ++;
+	return point_temp + 1000
 }

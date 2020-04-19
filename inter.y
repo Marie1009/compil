@@ -71,8 +71,8 @@ L:
     ;
 
 Expression:
-    tNb
-    |Expression tADD Expression {printf("addition\n"); }
+    tNb {int x = push(); printf("AFC %d %d\n",x,$1);}
+    |Expression tADD Expression {int a =pop(); int b = pop(); int c = push(); printf("ADD %d %d %d\n",c ,a, b); }
     |Expression tSUB Expression {printf("substraction\n");}
     |Expression tMUL Expression {printf("multiplication\n");}
     |Expression tDIV Expression {printf("division\n");}
@@ -87,9 +87,9 @@ Print:
 Instance:
     tInt tNom { add_symbol($2,0,0);}
     | tConst tNom { add_symbol($2,1,0);}
-    | tNom tEq Expression {int ad=get_address($1);  printf("AFC %d %d\n",ad, $3);}
-    | tInt tNom tEq Expression {add_symbol($2,0,0); int ad=get_address($2);  printf("AFC %d %d\n",ad, $4);}
-    | tConst tNom tEq Expression {add_symbol($2,1,0); int ad=get_address($2);  printf("AFC %d %d\n",ad, $4);}
+    | tNom tEq Expression {int ad=get_address($1); if(check_init(ad)==0){printf("AFC %d %d\n",ad, $3);} }
+    | tInt tNom tEq Expression {add_symbol($2,0,1); int ad=get_address($2);  printf("AFC %d %d\n",ad, $4);}
+    | tConst tNom tEq Expression {add_symbol($2,1,1); int ad=get_address($2);  printf("AFC %d %d\n",ad, $4);}
     ;
 
 
