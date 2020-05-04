@@ -5,7 +5,7 @@
     The structure and the elements are likely to change over the next few releases.
     This means code written to parse this file will need to be revisited each subsequent release.-->
 
-  <application stringID="NgdBuild" timeStamp="Fri May  1 17:45:37 2020">
+  <application stringID="NgdBuild" timeStamp="Mon May  4 11:38:27 2020">
     <section stringID="User_Env">
       <table stringID="User_EnvVar">
         <column stringID="variable"/>
@@ -31,13 +31,17 @@
         <item stringID="User_EnvOsname" value="Ubuntu"/>
         <item stringID="User_EnvOsrelease" value="Ubuntu 18.04.4 LTS"/>
       </item>
-      <item stringID="User_EnvHost" value="srv-ens-calcul"/>
+      <item stringID="User_EnvHost" value="srv-ens"/>
       <table stringID="User_EnvCpu">
         <column stringID="arch"/>
         <column stringID="speed"/>
         <row stringID="row" value="0">
-          <item stringID="arch" value="Intel(R) Xeon(R) CPU E5-2420 0 @ 1.90GHz"/>
-          <item stringID="speed" value="1354.940 MHz"/>
+          <item stringID="arch" value="Intel(R) Xeon(R) CPU E5-2650 v3 @ 2.30GHz"/>
+          <item stringID="speed" value="2121.374 MHz"/>
+        </row>
+        <row stringID="row" value="1">
+          <item stringID="arch" value="Intel(R) Xeon(R) CPU E5-2650 v3 @ 2.30GHz"/>
+          <item stringID="speed" value="1198.875 MHz"/>
         </row>
       </table>
     </section>

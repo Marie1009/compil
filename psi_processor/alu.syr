@@ -5,14 +5,14 @@ Parameter TMPDIR set to xst/projnav.tmp
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.08 secs
+Total CPU time to Xst completion: 0.09 secs
  
 --> 
 Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.08 secs
+Total CPU time to Xst completion: 0.09 secs
  
 --> 
 Reading design: alu.prj
@@ -109,10 +109,10 @@ INFO:Xst - Part-select index evaluated to out of bound value may lead to incorre
 =========================================================================
 *                          HDL Parsing                                  *
 =========================================================================
-Parsing VHDL file "/home/peraire/psi_processor/alu.vhd" into library work
+Parsing VHDL file "/home/peraire/PSI/psi_processor/alu.vhd" into library work
 Parsing entity <alu>.
 Parsing architecture <Behavioral> of entity <alu>.
-WARNING:HDLCompiler:1369 - "/home/peraire/psi_processor/alu.vhd" Line 50: Possible infinite loop; process does not have a wait statement
+WARNING:HDLCompiler:1369 - "/home/peraire/PSI/psi_processor/alu.vhd" Line 50: Possible infinite loop; process does not have a wait statement
 
 =========================================================================
 *                            HDL Elaboration                            *
@@ -125,7 +125,7 @@ Elaborating entity <alu> (architecture <Behavioral>) from library <work>.
 =========================================================================
 
 Synthesizing Unit <alu>.
-    Related source file is "/home/peraire/psi_processor/alu.vhd".
+    Related source file is "/home/peraire/PSI/psi_processor/alu.vhd".
     Found 16-bit adder for signal <GND_6_o_GND_6_o_add_1_OUT> created at line 54.
     Found 16-bit subtractor for signal <GND_6_o_GND_6_o_sub_6_OUT<15:0>> created at line 60.
     Found 8x8-bit multiplier for signal <A[7]_B[7]_MuLt_3_OUT> created at line 57.
@@ -395,13 +395,13 @@ Cross Clock Domains Report:
 =========================================================================
 
 
-Total REAL time to Xst completion: 7.00 secs
-Total CPU time to Xst completion: 7.11 secs
+Total REAL time to Xst completion: 5.00 secs
+Total CPU time to Xst completion: 4.63 secs
  
 --> 
 
 
-Total memory usage is 381840 kilobytes
+Total memory usage is 381756 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :   17 (   0 filtered)
