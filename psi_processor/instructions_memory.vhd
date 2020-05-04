@@ -2,9 +2,9 @@
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date:    17:29:21 05/01/2020 
+-- Create Date:    10:22:08 05/04/2020 
 -- Design Name: 
--- Module Name:    banc_memoire_data - Behavioral 
+-- Module Name:    instructions_memory - Behavioral 
 -- Project Name: 
 -- Target Devices: 
 -- Tool versions: 
@@ -29,19 +29,29 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity banc_memoire_data is
+entity instructions_memory is
     Port ( at : in  STD_LOGIC_VECTOR (7 downto 0);
-           IN : in  STD_LOGIC_VECTOR (7 downto 0);
-           RW : in  STD_LOGIC;
-           RST : in  STD_LOGIC;
            CLK : in  STD_LOGIC;
-           OUT : out  STD_LOGIC_VECTOR (7 downto 0));
-end banc_memoire_data;
+           data_out : out  STD_LOGIC_VECTOR (31 downto 0));
+end instructions_memory;
 
-architecture Behavioral of banc_memoire_data is
+architecture Behavioral of instructions_memory is
+
+--taille de 255 necessaire ????
+type array_of_instructions is array (0 to 255) of std_logic_vector (31 downto 0);
+signal memory: array_of_instructions := (others => (others => '0'));
 
 begin
 
+	process
+	begin
+	
+		wait until CLK'event and CLK = '1';
+		
+		--lecture
+		data_out <= memory(to_integer(unsigned(at)));
+		
+	end process;
 
 end Behavioral;
 

@@ -41,11 +41,27 @@ end data_memory;
 
 architecture Behavioral of data_memory is
 
+type array_of_data is array (0 to 255) of std_logic_vector (7 downto 0);
+signal memory: array_of_data := (others => (others => '0'));
+
 begin
 
 	process
 	begin
 	
+		wait until CLK'event and CLK = '1';
+		
+		if RST = '0'
+		then
+			memory <= (others => (others => '0'));
+		elsif RW = '1' --lecture
+		then
+			data_out <= memory(to_integer(unsigned(at)));
+		elsif RW = '0' --ecriture
+		then
+			memory(to_integer(unsigned(at))) <= data_in;
+		end if;
+		
 	end process;
 
 end Behavioral;

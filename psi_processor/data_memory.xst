@@ -1,5 +1,5 @@
-set -tmpdir "/home/peraire/psi_processor/xst/projnav.tmp"
-set -xsthdpdir "/home/peraire/psi_processor/xst"
+set -tmpdir "/home/peraire/PSI/psi_processor/xst/projnav.tmp"
+set -xsthdpdir "/home/peraire/PSI/psi_processor/xst"
 run -compileonly yes
 -p xc6slx16-3-csg324
 -top data_memory

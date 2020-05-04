@@ -1,18 +1,18 @@
 Release 13.4 - xst O.87xd (lin64)
 Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
 --> 
-Parameter TMPDIR set to /home/peraire/psi_processor/xst/projnav.tmp
+Parameter TMPDIR set to /home/peraire/PSI/psi_processor/xst/projnav.tmp
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.10 secs
+Total CPU time to Xst completion: 0.08 secs
  
 --> 
-Parameter xsthdpdir set to /home/peraire/psi_processor/xst
+Parameter xsthdpdir set to /home/peraire/PSI/psi_processor/xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.10 secs
+Total CPU time to Xst completion: 0.09 secs
  
 --> 
 Reading design: data_memory.prj
@@ -43,22 +43,20 @@ INFO:Xst - Part-select index evaluated to out of bound value may lead to incorre
 =========================================================================
 *                          HDL Parsing                                  *
 =========================================================================
-ERROR:HDLCompiler:488 - "/home/peraire/psi_processor/data_memory.vhd" Line 35: Illegal identifier : IN_
-ERROR:HDLCompiler:488 - "/home/peraire/psi_processor/data_memory.vhd" Line 39: Illegal identifier : OUT_
-Parsing VHDL file "/home/peraire/psi_processor/data_memory.vhd" into library work
+Parsing VHDL file "/home/peraire/PSI/psi_processor/data_memory.vhd" into library work
 Parsing entity <data_memory>.
-ERROR:HDLCompiler:488 - "/home/peraire/psi_processor/data_memory.vhd" Line 35: Illegal identifier : IN_
-ERROR:HDLCompiler:488 - "/home/peraire/psi_processor/data_memory.vhd" Line 39: Illegal identifier : OUT_
-ERROR:HDLCompiler:854 - "/home/peraire/psi_processor/data_memory.vhd" Line 33: Unit <data_memory> ignored due to previous errors.
 Parsing architecture <Behavioral> of entity <data_memory>.
-ERROR:HDLCompiler:374 - "/home/peraire/psi_processor/data_memory.vhd" Line 42: Entity <data_memory> is not yet compiled.
-VHDL file /home/peraire/psi_processor/data_memory.vhd ignored due to errors
+
+
+Total REAL time to Xst completion: 4.00 secs
+Total CPU time to Xst completion: 3.22 secs
+ 
 --> 
 
 
-Total memory usage is 302996 kilobytes
+Total memory usage is 302972 kilobytes
 
-Number of errors   :    6 (   0 filtered)
+Number of errors   :    0 (   0 filtered)
 Number of warnings :    0 (   0 filtered)
 Number of infos    :    1 (   0 filtered)
 
