@@ -1,5 +1,5 @@
 ISim log file
-Running: /home/peraire/PSI/psi_processor/alu_test_isim_beh.exe -intstyle ise -gui -tclbatch isim.cmd -wdb /home/peraire/PSI/psi_processor/alu_test_isim_beh.wdb 
+Running: /home/peraire/PSI/psi_processor/alu_t_isim_beh.exe -intstyle ise -gui -tclbatch isim.cmd -wdb /home/peraire/PSI/psi_processor/alu_t_isim_beh.wdb 
 ISim O.87xd (signature 0x8ddf5b5d)
 ----------------------------------------------------------------------
 INFO:Security:50 - The XILINXD_LICENSE_FILE environment variable is set to '2100@srv-gei-ens1'.
@@ -31,5 +31,5 @@ Time resolution is 1 ps
 # wave add /
 # run 1000 ns
 Simulator is doing circuit initialization process.
-Stopped at time : 0 fs : File "/home/peraire/PSI/psi_processor/alu.vhd" Line 52
+Finished circuit initialization process.
 # exit 0

@@ -27,6 +27,8 @@
 --------------------------------------------------------------------------------
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.std_logic_unsigned.all;
  
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
@@ -66,7 +68,6 @@ ARCHITECTURE behavior OF alu_test IS
    -- No clocks detected in port list. Replace <clock> below with 
    -- appropriate port name 
  
-   constant clk_period : time := 10 ns;
  
 BEGIN
  
@@ -82,22 +83,33 @@ BEGIN
           C => C
         );
  
+ --systeme jeanne et gabrielle
+	Ctrl_Alu <= "000";
+	A <= X"01";
+	B <= X"01";
 	
-   -- Stimulus process
-   stim_proc: process
-   begin		
-      -- hold reset state for 100 ns.
-      -- wait for 100 ns;	
-
-      wait for clk_period*10;
-		
-			A <= x"01";
-			B <= x"01";
-			Ctrl_Alu <= "001";
-
-      -- wait;
-   end process;
+	--wait for 100 ns;
 	
+	Ctrl_Alu <= "001";
+	A <= X"FF";
+	B <= X"FF";
 	
-
+	--wait for 100 ns;
+	
+	Ctrl_Alu <= "010";
+	A <= X"0F";
+	B <= X"0F";
+	
+	--wait for 100 ns;
+	
+	Ctrl_Alu <= "011";
+	A <= X"01";
+	B <= X"01";
+	
+ 
+ --emma et patrick
+Ctrl_Alu <= "000", "001" after 100 ns, "010" after 200 ns, "011" after 300 ns, "100" after 400 ns, "101" after 450 ns, "110" after 500 ns, "111" after 550 ns;
+A <= X"01", X"FF" after 25 ns, X"0F" after 50 ns, X"01" after 100 ns, X"02" after 150 ns, X"FF" after 225 ns, X"00" after 450 ns, X"FF" after 475 ns, X"00" after 525 ns;
+B <= X"01", X"FF" after 25 ns, X"0F" after 75 ns, X"01" after 100 ns, X"02" after 125 ns, X"F0" after 150 ns, X"03" after 200 ns, X"FF" after 425 ns; 
+ 
 END;

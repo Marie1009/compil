@@ -47,34 +47,40 @@ signal result_temp : STD_LOGIC_VECTOR(15 downto 0) := (others => '0');
 
 begin
 
-	process
-	begin
-		if Ctrl_Alu = "001" --addition
-		then
-			result_temp <= ("00000000" & A) + ("00000000" & B);
-		elsif Ctrl_Alu = "010" --multiplication
-		then
-			result_temp <= A * B;
-		elsif Ctrl_Alu = "011" --soustraction
-		then
-			result_temp <= ("00000000" & A) - ("00000000" & B);
+	--process
+	--begin
+		
+	--	if Ctrl_Alu = "001" --addition
+	--	then
+	--		result_temp <= ("00000000" & A) + ("00000000" & B);
+	--	elsif Ctrl_Alu = "010" --multiplication
+	--	then
+	--		result_temp <= A * B;
+	--	elsif Ctrl_Alu = "011" --soustraction
+	--	then
+	--		result_temp <= ("00000000" & A) - ("00000000" & B);
 		--elsif Ctrl_Alu = "100" --division
 		--then
 		--else --erreur
-		end if;
+	--	end if;
+	--
+	--end process;
 	
-	end process;
+	result_temp <= ("00000000" & A) + ("00000000" & B) when Ctrl_Alu = "001" --addition
+				else  A * B when Ctrl_Alu = "010" --multiplication
+				else  ("00000000" & A) - ("00000000" & B) when Ctrl_Alu = "011" --soustraction
+				;
 	
 	S <= result_temp(7 downto 0);
 	-->>flags
-	--negative
+	--negative -- on sait pas si a et b sont signes => verification apres l'alu
 	N <= result_temp(7);
 	--overflow
 	O <= '0' when result_temp(15 downto 8) = x"00" else '1';
 	--null
 	Z <= '1' when result_temp(15 downto 0) = x"0000" else '0';
 	--retenue de l'addition et de la multiplication
-	C <= '1' when Ctrl_Alu="001" and result_temp(8)='1' 
+	C <= '1' when Ctrl_Alu="001" and result_temp(8)='1' --changement 8 to 7 ???
 	else '1' when Ctrl_Alu="010" and result_temp(15 downto 8)>x"00" 
 	else '0';
 

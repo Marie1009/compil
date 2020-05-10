@@ -1,1 +1,1 @@
--intstyle "ise" -incremental -lib "secureip" -o "/home/peraire/PSI/psi_processor/alu_test_isim_beh.exe" -prj "/home/peraire/PSI/psi_processor/alu_test_beh.prj" "work.alu_test" 
+-intstyle "ise" -incremental -lib "secureip" -o "/home/peraire/PSI/psi_processor/alu_t_isim_beh.exe" -prj "/home/peraire/PSI/psi_processor/alu_t_beh.prj" "work.alu_t" 
