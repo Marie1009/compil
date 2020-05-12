@@ -22,7 +22,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
---use IEEE.NUMERIC_STD.ALL;
+use IEEE.NUMERIC_STD.ALL;
 
 -- Uncomment the following library declaration if instantiating
 -- any Xilinx primitives in this code.
@@ -42,6 +42,15 @@ type array_of_instructions is array (0 to 255) of std_logic_vector (31 downto 0)
 signal memory: array_of_instructions := (others => (others => '0'));
 
 begin
+
+memory(0)<= X"06050F00"; -- AFC R5 15 _
+memory(1)<= x"02"; -- COP
+memory(2)<= x"03";
+memory(3)<= x"04";
+memory(4)<= x"05";
+memory(5)<= x"06";
+memory(6)<= x"07";
+memory(7)<= x"08";
 
 	process
 	begin

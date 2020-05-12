@@ -5,5 +5,47 @@
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
 <messages>
+<msg type="error" file="HDLCompiler" num="69" delta="unknown" >"/home/peraire/PSI/psi_processor/processor.vhd" Line 104: &lt;<arg fmt="%s" index="1">a</arg>&gt; is not declared.
+</msg>
+
+<msg type="error" file="HDLCompiler" num="69" delta="unknown" >"/home/peraire/PSI/psi_processor/processor.vhd" Line 105: &lt;<arg fmt="%s" index="1">b</arg>&gt; is not declared.
+</msg>
+
+<msg type="error" file="HDLCompiler" num="69" delta="unknown" >"/home/peraire/PSI/psi_processor/processor.vhd" Line 106: &lt;<arg fmt="%s" index="1">ctrl_alu</arg>&gt; is not declared.
+</msg>
+
+<msg type="error" file="HDLCompiler" num="69" delta="unknown" >"/home/peraire/PSI/psi_processor/processor.vhd" Line 107: &lt;<arg fmt="%s" index="1">s</arg>&gt; is not declared.
+</msg>
+
+<msg type="error" file="HDLCompiler" num="192" delta="unknown" >"/home/peraire/PSI/psi_processor/processor.vhd" Line 107: Actual of formal <arg fmt="%s" index="1">out</arg> port <arg fmt="%s" index="2">s</arg> cannot be an expression
+</msg>
+
+<msg type="error" file="HDLCompiler" num="69" delta="unknown" >"/home/peraire/PSI/psi_processor/processor.vhd" Line 108: &lt;<arg fmt="%s" index="1">n</arg>&gt; is not declared.
+</msg>
+
+<msg type="error" file="HDLCompiler" num="192" delta="unknown" >"/home/peraire/PSI/psi_processor/processor.vhd" Line 108: Actual of formal <arg fmt="%s" index="1">out</arg> port <arg fmt="%s" index="2">n</arg> cannot be an expression
+</msg>
+
+<msg type="error" file="HDLCompiler" num="69" delta="unknown" >"/home/peraire/PSI/psi_processor/processor.vhd" Line 109: &lt;<arg fmt="%s" index="1">o</arg>&gt; is not declared.
+</msg>
+
+<msg type="error" file="HDLCompiler" num="192" delta="unknown" >"/home/peraire/PSI/psi_processor/processor.vhd" Line 109: Actual of formal <arg fmt="%s" index="1">out</arg> port <arg fmt="%s" index="2">o</arg> cannot be an expression
+</msg>
+
+<msg type="error" file="HDLCompiler" num="69" delta="unknown" >"/home/peraire/PSI/psi_processor/processor.vhd" Line 110: &lt;<arg fmt="%s" index="1">z</arg>&gt; is not declared.
+</msg>
+
+<msg type="error" file="HDLCompiler" num="192" delta="unknown" >"/home/peraire/PSI/psi_processor/processor.vhd" Line 110: Actual of formal <arg fmt="%s" index="1">out</arg> port <arg fmt="%s" index="2">z</arg> cannot be an expression
+</msg>
+
+<msg type="error" file="HDLCompiler" num="69" delta="unknown" >"/home/peraire/PSI/psi_processor/processor.vhd" Line 111: &lt;<arg fmt="%s" index="1">c</arg>&gt; is not declared.
+</msg>
+
+<msg type="error" file="HDLCompiler" num="192" delta="unknown" >"/home/peraire/PSI/psi_processor/processor.vhd" Line 111: Actual of formal <arg fmt="%s" index="1">out</arg> port <arg fmt="%s" index="2">c</arg> cannot be an expression
+</msg>
+
+<msg type="error" file="HDLCompiler" num="854" delta="unknown" >"/home/peraire/PSI/psi_processor/processor.vhd" Line 39: Unit &lt;<arg fmt="%s" index="1">behavioral</arg>&gt; ignored due to previous errors.
+</msg>
+
 </messages>
 
