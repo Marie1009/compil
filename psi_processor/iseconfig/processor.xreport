@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <DateModified>2020-05-18T10:16:41</DateModified>
+  <DateModified>2020-05-18T15:04:45</DateModified>
   <ModuleName>processor</ModuleName>
   <SummaryTimeStamp>Unknown</SummaryTimeStamp>
   <SavedFilePath>/home/peraire/PSI/psi_processor/iseconfig/processor.xreport</SavedFilePath>
-  <ImplementationReportsDirectory>/home/peraire/PSI/psi_processor</ImplementationReportsDirectory>
+  <ImplementationReportsDirectory>/home/peraire/PSI/psi_processor/</ImplementationReportsDirectory>
   <DateInitialized>2020-05-18T10:16:41</DateInitialized>
   <EnableMessageFiltering>false</EnableMessageFiltering>
  </header>

@@ -111,22 +111,60 @@ signal C_lidi : STD_LOGIC_VECTOR (7 downto 0);
 
 --banc de registre
 signal RST_BR : std_logic; --in
-signal QA : STD_LOGIC_VECTOR (7 downto 0); --out
-signal QB : STD_LOGIC_VECTOR (7 downto 0); --out
+signal QA_BR : STD_LOGIC_VECTOR (7 downto 0); --out
+signal QB_BR : STD_LOGIC_VECTOR (7 downto 0); --out
 
 --MUX 1
 signal mux1_out : STD_LOGIC_VECTOR (7 downto 0); --in du B_diex
 
----------------------
+--pipeline DI/EX (num2)
+	--entrees A OP B et C => deja avant
+	--sorties:
+signal OP_diex : STD_LOGIC_VECTOR (7 downto 0);
+signal A_diex : STD_LOGIC_VECTOR (7 downto 0);
+signal B_diex : STD_LOGIC_VECTOR (7 downto 0);
+signal C_diex : STD_LOGIC_VECTOR (7 downto 0);
+
+--LC 1
+signal lc1_out : STD_LOGIC_VECTOR (2 downto 0);
+
+--ual
+--entrees A B et ctrl_alu => deja avant
+--sorties N O Z C open
+signal S_ual : STD_LOGIC_VECTOR (7 downto 0);
+
+--MUX 2
+signal mux2_out: STD_LOGIC_VECTOR (7 downto 0); --in B exmem
+
+--pipeline EX/Mem (num3)
+	--entrees A OP B => deja avant ; et C (bidon) 
+	--C_out open
+	--sorties:
+signal OP_exmem : STD_LOGIC_VECTOR (7 downto 0);
+signal A_exmem : STD_LOGIC_VECTOR (7 downto 0);
+signal B_exmem : STD_LOGIC_VECTOR (7 downto 0);
+
+--MUX 3
+signal mux3_out : STD_LOGIC_VECTOR (7 downto 0); --in add memoire des donnees
+
+--LC 2
+signal lc2_out : std_logic; --in RW memoire des donnees
+
+--memoire des donnees
+-- IN deja avec B_exmem
+signal RST_dm : std_logic; --in
+signal OUT_dm : STD_LOGIC_VECTOR (7 downto 0);
+
+--MUX 4
+signal mux4_out : STD_LOGIC_VECTOR (7 downto 0);
 
 --pipeline Mem/RE (num4)
---noms temporaires
---signal OP_in_RE : in  STD_LOGIC_VECTOR (7 downto 0);
---signal A_in_RE : in  STD_LOGIC_VECTOR (7 downto 0);
---signal B_in_RE : in  STD_LOGIC_VECTOR (7 downto 0);
-signal OP_memre : out  STD_LOGIC_VECTOR (7 downto 0);
-signal A_memre : out  STD_LOGIC_VECTOR (7 downto 0);
-signal B_memre : out  STD_LOGIC_VECTOR (7 downto 0);
+--entrees A OP B => deja avant ; et C (bidon) 
+	--C_out open
+	--sorties:
+signal OP_memre : STD_LOGIC_VECTOR (7 downto 0);
+signal A_memre : STD_LOGIC_VECTOR (7 downto 0);
+signal B_memre : STD_LOGIC_VECTOR (7 downto 0);
 
 --LC 3
 signal lc3_out : std_logic; --in W banc de reg
@@ -154,28 +192,78 @@ begin
 		  );
 		
 	register_bench : banc_registre PORT MAP (
-          at_A => B_lidi,
-          at_B => C_lidi,
-          at_W => A_memre,
+          at_A => B_lidi(3 downto 0),
+          at_B => C_lidi(3 downto 0),
+          at_W => A_memre(3 downto 0),
           W => lc3_out,
           DATA => B_memre,
           RST => RST_BR, --attention, c'est sur ?
           CLK => CLK,
-          QA => QA,
-          QB => QB
+          QA => QA_BR,
+          QB => QB_BR
+        );
+		  
+	diex: pipeline PORT MAP (
+			 OP => OP_lidi,
+			 A => A_lidi,
+			 B => mux1_out,
+			 C => QB_BR,
+			 
+			 OP_out => OP_diex,
+			 A_out => A_diex,
+			 B_out => B_diex,
+			 C_out => C_diex,
+			 
+			 CLK => CLK
+		  );
+	
+	ual : alu PORT MAP (
+          A => B_diex,
+          B => C_diex,
+          Ctrl_Alu => lc1_out,
+          S => S_ual,
+          N => Open,
+          O => Open,
+          Z => Open,
+          C => Open
         );
 	
-	--------------------------------------------
-	alu_p: alu PORT MAP (
-          A => A,
-          B => B,
-          Ctrl_Alu => Ctrl_Alu,
-          S => S,
-          N => N,
-          O => O,
-          Z => Z,
-          C => C
+	exmem : pipeline PORT MAP (
+			 OP => OP_diex,
+			 A => A_diex,
+			 B => mux2_out,
+			 C => x"00",
+			 
+			 OP_out => OP_exmem,
+			 A_out => A_exmem,
+			 B_out => B_exmem,
+			 C_out => Open,
+			 
+			 CLK => CLK
+		  );
+		  
+	memory : data_memory PORT MAP (
+          at => mux3_out,
+          data_in => B_exmem,
+          RW => lc2_out,
+          RST => RST_dm,
+          CLK => CLK,
+          data_out => OUT_dm
         );
+		  
+	memre: pipeline PORT MAP (
+			 OP => OP_exmem,
+			 A => A_exmem,
+			 B => mux4_out,
+			 C => x"00",
+			 
+			 OP_out => Open, --car entree du LC 3 --?????????
+			 A_out => add_W_BR ??,
+			 B_out => data_BR ??, 
+			 C_out => Open,
+			 
+			 CLK => CLK
+		  );
 		  
 
 	process
