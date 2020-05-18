@@ -11,7 +11,25 @@
 <msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;/home/peraire/PSI/psi_processor/processor.vhd&quot; into library work</arg>
 </msg>
 
-<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/peraire/PSI/psi_processor/processor.vhd</arg>&quot; Line <arg fmt="%d" index="2">106</arg>. <arg fmt="%s" index="3">Syntax error near &quot;out&quot;.</arg>
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/peraire/PSI/psi_processor/processor.vhd</arg>&quot; Line <arg fmt="%d" index="2">127</arg>. <arg fmt="%s" index="3">Syntax error near &quot;out&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/peraire/PSI/psi_processor/processor.vhd</arg>&quot; Line <arg fmt="%d" index="2">193</arg>. <arg fmt="%s" index="3">Syntax error near &quot;=&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/peraire/PSI/psi_processor/processor.vhd</arg>&quot; Line <arg fmt="%d" index="2">196</arg>. <arg fmt="%s" index="3">Syntax error near &quot;else&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/peraire/PSI/psi_processor/processor.vhd</arg>&quot; Line <arg fmt="%d" index="2">198</arg>. <arg fmt="%s" index="3">Syntax error near &quot;if&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/peraire/PSI/psi_processor/processor.vhd</arg>&quot; Line <arg fmt="%d" index="2">201</arg>. <arg fmt="%s" index="3">Syntax error near &quot;=&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/peraire/PSI/psi_processor/processor.vhd</arg>&quot; Line <arg fmt="%d" index="2">204</arg>. <arg fmt="%s" index="3">Syntax error near &quot;else&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/peraire/PSI/psi_processor/processor.vhd</arg>&quot; Line <arg fmt="%d" index="2">206</arg>. <arg fmt="%s" index="3">Syntax error near &quot;if&quot;.</arg>
 </msg>
 
 </messages>

@@ -102,11 +102,34 @@ signal at_inst : STD_LOGIC_VECTOR (7 downto 0); --IP parcourt tous les numeros d
 signal data_out_inst : STD_LOGIC_VECTOR (31 downto 0); 
 
 --pipeline LI/DI (num1)
-	--entree A OP B et C => data_out_inst
-signal OP_lidi : out  STD_LOGIC_VECTOR (7 downto 0);
-signal A_lidi : out  STD_LOGIC_VECTOR (7 downto 0);
-signal B_lidi : out  STD_LOGIC_VECTOR (7 downto 0);
-signal C_lidi : out  STD_LOGIC_VECTOR (7 downto 0);
+	--entrees A OP B et C => data_out_inst
+	--sorties:
+signal OP_lidi : STD_LOGIC_VECTOR (7 downto 0);
+signal A_lidi : STD_LOGIC_VECTOR (7 downto 0);
+signal B_lidi : STD_LOGIC_VECTOR (7 downto 0);
+signal C_lidi : STD_LOGIC_VECTOR (7 downto 0);
+
+--banc de registre
+signal RST_BR : std_logic; --in
+signal QA : STD_LOGIC_VECTOR (7 downto 0); --out
+signal QB : STD_LOGIC_VECTOR (7 downto 0); --out
+
+--MUX 1
+signal mux1_out : STD_LOGIC_VECTOR (7 downto 0); --in du B_diex
+
+---------------------
+
+--pipeline Mem/RE (num4)
+--noms temporaires
+--signal OP_in_RE : in  STD_LOGIC_VECTOR (7 downto 0);
+--signal A_in_RE : in  STD_LOGIC_VECTOR (7 downto 0);
+--signal B_in_RE : in  STD_LOGIC_VECTOR (7 downto 0);
+signal OP_memre : out  STD_LOGIC_VECTOR (7 downto 0);
+signal A_memre : out  STD_LOGIC_VECTOR (7 downto 0);
+signal B_memre : out  STD_LOGIC_VECTOR (7 downto 0);
+
+--LC 3
+signal lc3_out : std_logic; --in W banc de reg
 
 begin
 
@@ -130,8 +153,19 @@ begin
 			 CLK => CLK
 		  );
 		
+	register_bench : banc_registre PORT MAP (
+          at_A => B_lidi,
+          at_B => C_lidi,
+          at_W => A_memre,
+          W => lc3_out,
+          DATA => B_memre,
+          RST => RST_BR, --attention, c'est sur ?
+          CLK => CLK,
+          QA => QA,
+          QB => QB
+        );
 	
-	
+	--------------------------------------------
 	alu_p: alu PORT MAP (
           A => A,
           B => B,
@@ -148,12 +182,28 @@ begin
 	begin
 		
 		--synchro clock
+		wait until CLK'event and CLK = '1';
 		
 		--incrementation de IP : compteur qui lit les instructions
 		
 		--chaque attributions des signaux
 		--MUX et LC => si op == ... then ...
 		
+		--MUX 1: banc de registre/pipeline 2
+		if OP_lidi == x"06" or OP_lidi == x"07" --afc -- load
+		then
+			mux1_out <= B_lidi;
+		else --copie --store --add mul sou
+			mux1_out <= QA;
+		end if;
+		
+		--LC 3: pipeline 4/banc de registre
+		if OP_memre == x"08" --store
+		then
+			lc3_out <= '0';
+		else -- tout le reste
+			lc3_out <= '1';
+		end if;
 	
 	end process;
 

@@ -44,13 +44,13 @@ signal memory: array_of_instructions := (others => (others => '0'));
 begin
 
 memory(0)<= X"06050F00"; -- AFC R5 15 _
-memory(1)<= x"02"; -- COP
-memory(2)<= x"03";
-memory(3)<= x"04";
-memory(4)<= x"05";
-memory(5)<= x"06";
-memory(6)<= x"07";
-memory(7)<= x"08";
+memory(1)<= x"05"; -- COP R1 R2 _
+memory(2)<= x"01"; -- ADD R3 R4 R5
+memory(3)<= x"02"; -- MUL R6 R1 R2
+memory(4)<= x"04"; -- DIV R4 R2 R5
+memory(5)<= x"03"; -- SOU R7 R8 R3
+memory(6)<= x"07"; -- LOAD R1 @_ _
+memory(7)<= x"08"; -- STORE @_ R5 _
 
 	process
 	begin
