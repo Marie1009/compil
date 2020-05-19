@@ -1,0 +1,35 @@
+Running: /usr/local/insa/Xilinx.ISE/13.4/ISE_DS/ISE/bin/lin64/unwrapped/fuse -intstyle ise -incremental -lib secureip -o /home/peraire/PSI/psi_processor/processor_test_isim_beh.exe -prj /home/peraire/PSI/psi_processor/processor_test_beh.prj work.processor_test 
+ISim O.87xd (signature 0x8ddf5b5d)
+Number of CPUs detected in this system: 12
+Turning on mult-threading, number of parallel sub-compilation jobs: 24 
+Determining compilation order of HDL files
+Parsing VHDL file "/home/peraire/PSI/psi_processor/pipeline.vhd" into library work
+Parsing VHDL file "/home/peraire/PSI/psi_processor/instructions_memory.vhd" into library work
+Parsing VHDL file "/home/peraire/PSI/psi_processor/data_memory.vhd" into library work
+Parsing VHDL file "/home/peraire/PSI/psi_processor/banc_registre.vhd" into library work
+Parsing VHDL file "/home/peraire/PSI/psi_processor/alu.vhd" into library work
+Parsing VHDL file "/home/peraire/PSI/psi_processor/processor.vhd" into library work
+Parsing VHDL file "/home/peraire/PSI/psi_processor/processor_test.vhd" into library work
+Starting static elaboration
+Completed static elaboration
+Fuse Memory Usage: 98512 KB
+Fuse CPU Usage: 1320 ms
+Compiling package standard
+Compiling package std_logic_1164
+Compiling package std_logic_arith
+Compiling package std_logic_unsigned
+Compiling package numeric_std
+Compiling architecture behavioral of entity instructions_memory [instructions_memory_default]
+Compiling architecture behavioral of entity pipeline [pipeline_default]
+Compiling architecture behavioral of entity banc_registre [banc_registre_default]
+Compiling architecture behavioral of entity alu [alu_default]
+Compiling architecture behavioral of entity data_memory [data_memory_default]
+Compiling architecture behavioral of entity processor [processor_default]
+Compiling architecture behavior of entity processor_test
+Time Resolution for simulation is 1ps.
+Waiting for 1 sub-compilation(s) to finish...
+Compiled 18 VHDL Units
+Built simulation executable /home/peraire/PSI/psi_processor/processor_test_isim_beh.exe
+Fuse Memory Usage: 1723200 KB
+Fuse CPU Usage: 1620 ms
+GCC CPU Usage: 4800 ms

@@ -93,12 +93,12 @@ BEGIN
 		wait for 100 ns;	
 		
 		--reset
-		RST <= '0';
+		RESET <= '0';
 		
 		wait for 100 ns;	
 		
 		--reset
-		RST <= '1';
+		RESET <= '1';
 
       wait;
    end process;
