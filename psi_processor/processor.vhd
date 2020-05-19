@@ -197,7 +197,7 @@ begin
           at_W => A_memre(3 downto 0),
           W => lc3_out,
           DATA => B_memre,
-          RST => RST_BR, --attention, c'est sur ?
+          RST => RST_BR,
           CLK => CLK,
           QA => QA_BR,
           QB => QB_BR
@@ -257,9 +257,9 @@ begin
 			 B => mux4_out,
 			 C => x"00",
 			 
-			 OP_out => Open, --car entree du LC 3 --?????????
-			 A_out => add_W_BR ??,
-			 B_out => data_BR ??, 
+			 OP_out => OP_memre,
+			 A_out => A_memre,
+			 B_out => B_memre, 
 			 C_out => Open,
 			 
 			 CLK => CLK
@@ -272,25 +272,101 @@ begin
 		--synchro clock
 		wait until CLK'event and CLK = '1';
 		
-		--incrementation de IP : compteur qui lit les instructions
-		
-		--chaque attributions des signaux
-		--MUX et LC => si op == ... then ...
-		
-		--MUX 1: banc de registre/pipeline 2
-		if OP_lidi == x"06" or OP_lidi == x"07" --afc -- load
+		if RESET = '0'
 		then
-			mux1_out <= B_lidi;
-		else --copie --store --add mul sou
-			mux1_out <= QA;
-		end if;
-		
-		--LC 3: pipeline 4/banc de registre
-		if OP_memre == x"08" --store
-		then
-			lc3_out <= '0';
-		else -- tout le reste
-			lc3_out <= '1';
+			RST_BR <= '0';
+			RST_dm <= '0';
+			
+			at_inst <= x"01";
+		else
+			RST_BR <= '1';
+			RST_dm <= '1';
+			
+			--incrementation de IP : compteur qui lit les instructions
+			if at_inst = x"08"
+			then
+				at_inst <= x"01";
+			elsif at_inst = x"02"
+			then
+				at_inst <= x"04";
+			else
+				at_inst <= at_inst + 1;
+			end if;
+			
+			--chaque attributions des signaux
+			--MUX et LC => si op == ... then ...
+			
+			--MUX 1: banc de registre/pipeline 2
+			if OP_lidi = x"06" or OP_lidi = x"07" --afc -- load
+			then
+				mux1_out <= B_lidi;
+			else --copie --store --add mul sou
+				mux1_out <= QA_BR;
+			end if;
+			
+			--LC 1: pipeline diex/ual
+			if OP_diex = x"01" --add
+			then
+				lc1_out <= "001";
+			elsif OP_diex = x"02" --mul
+			then
+				lc1_out <= "010";
+			elsif OP_diex = x"03" --sou
+			then
+				lc1_out <= "011";
+			else --pas de div
+				lc1_out <= "000";
+			end if;
+			
+			--MUX 2: ual/pipeline exmem
+			if OP_diex = x"01" or OP_diex = x"02" or OP_diex = x"03"
+			then
+				mux2_out <= S_ual;
+			else
+				mux2_out <= B_diex;
+			end if;
+			
+			--MUX 3: pipeline exmem/memoire de donnees
+			if OP_exmem = x"07" --load
+			then
+				mux3_out <= B_exmem;
+			elsif OP_exmem = x"08" --store
+			then
+				mux3_out <= A_exmem;
+			else
+				mux3_out <= x"00";
+				--lecture dans lc2
+			end if;
+			
+			--LC 2: pipeline exmem/memoire de donnees
+			if OP_exmem = x"07" --load
+			then
+				lc2_out <= '1'; --lire
+			elsif OP_exmem = x"08" --store
+			then
+				lc2_out <= '0'; --ecrire
+			else
+				lc2_out <= '1'; --lire
+			end if;
+			
+			
+			--MUX 4: memoire de donnees/pipeline memre
+			if OP_exmem = x"07" --load
+			then
+				mux4_out <= OUT_dm; --lire
+			else
+				mux4_out <= B_exmem; --autre
+			end if;
+			
+			
+			--LC 3: pipeline 4/banc de registre
+			if OP_memre = x"08" --store
+			then
+				lc3_out <= '0';
+			else -- tout le reste
+				lc3_out <= '1';
+			end if;
+			
 		end if;
 	
 	end process;

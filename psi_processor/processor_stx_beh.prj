@@ -1,2 +1,6 @@
+vhdl isim_temp "pipeline.vhd"
+vhdl isim_temp "instructions_memory.vhd"
+vhdl isim_temp "data_memory.vhd"
+vhdl isim_temp "banc_registre.vhd"
 vhdl isim_temp "alu.vhd"
 vhdl isim_temp "processor.vhd"

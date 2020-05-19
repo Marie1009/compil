@@ -1,1 +1,1 @@
--intstyle "ise" -incremental -lib "secureip" -o "/home/peraire/PSI/psi_processor/data_memory_test_isim_beh.exe" -prj "/home/peraire/PSI/psi_processor/data_memory_test_beh.prj" "work.data_memory_test" 
+-intstyle "ise" -incremental -lib "secureip" -o "/home/peraire/PSI/psi_processor/processor_test_isim_beh.exe" -prj "/home/peraire/PSI/psi_processor/processor_test_beh.prj" "work.processor_test" 

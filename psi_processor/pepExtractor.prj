@@ -1,1 +1,6 @@
+work	"alu.vhd"
+work	"banc_registre.vhd"
+work	"data_memory.vhd"
 work	"instructions_memory.vhd"
+work	"pipeline.vhd"
+work	"processor.vhd"

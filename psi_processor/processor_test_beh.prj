@@ -1,0 +1,7 @@
+vhdl work "pipeline.vhd"
+vhdl work "instructions_memory.vhd"
+vhdl work "data_memory.vhd"
+vhdl work "banc_registre.vhd"
+vhdl work "alu.vhd"
+vhdl work "processor.vhd"
+vhdl work "processor_test.vhd"
