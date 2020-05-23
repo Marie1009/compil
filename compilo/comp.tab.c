@@ -1294,7 +1294,7 @@ yyreduce:
 
   case 14:
 #line 83 "comp.y" /* yacc.c:1646  */
-    {printf("addition\n");}
+    {printf("addition\n"); }
 #line 1299 "comp.tab.c" /* yacc.c:1646  */
     break;
 

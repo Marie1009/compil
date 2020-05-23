@@ -4,7 +4,7 @@
 
 symbol table[100];
 
-int temp[300];
+//int temp[300];
 int point_temp = 0;
 
 
@@ -18,7 +18,7 @@ int check_init(int ad){
 	if(ad == -1){
 		return -1;
 	}else{
-		if(table[ad].is_cons == 1){
+		if(table[ad].is_constant == 1){
 			return table[ad].is_init;
 		}else{
 			return 0;
@@ -27,7 +27,7 @@ int check_init(int ad){
 }
 
 int get_address(char * id){
-	x = ask_symbol(id);
+	int x = ask_symbol(id);
 	if (x!=-1){
 		return x;
 	}else{
@@ -85,5 +85,5 @@ int pop(){
 
 int push(){
 	point_temp ++;
-	return point_temp + 1000
+	return point_temp + 1000;
 }
