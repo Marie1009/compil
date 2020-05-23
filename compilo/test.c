@@ -1,3 +1,3 @@
 int main()
 {
-	const toto = 10;}
+	int a = 2;}

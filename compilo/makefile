@@ -1,3 +1,3 @@
-bison -d comp.y
+bison -d inter.y
 flex comp.l
-gcc lex.yy.c comp.tab.c -o compilercomp symboltable.c 
+gcc lex.yy.c inter.tab.c -o compiler symboltable.c 
