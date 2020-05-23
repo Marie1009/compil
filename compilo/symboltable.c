@@ -14,6 +14,15 @@ int index_table = 0;
 // verifier affectation constante autorisée
 // opérations asm
 
+void init(){
+	for(int i = 0; i<100; i++){
+		table[i].id = "toto" ;
+		table[i].is_constant = 0;
+		table[i].is_init = 0;
+		table[i].depth = 0;
+	}
+}
+
 int check_init(int ad){
 	if(ad == -1){
 		return -1;
@@ -26,7 +35,7 @@ int check_init(int ad){
 	}
 }
 
-int get_address(char * id){
+int get_address(char *id){
 	int x = ask_symbol(id);
 	if (x!=-1){
 		return x;
@@ -36,28 +45,34 @@ int get_address(char * id){
 	}
 }
 
-int ask_symbol(char * id){
+int ask_symbol(char *id){
 	int i=0;
+
+
+
 	while ((strcmp(table[i].id,id)!=0 || table[i].depth != global_depth) && i< index_table ){
 		i ++;
+		
 	}
 	if (i == index_table){
+		
 		return -1;
 	}else{
+		
 		return i;
 	}
 }
 
-void add_symbol(char * id, int is_cons, int is_init ){
+void add_symbol(char *id, int is_cons, int is_init ){
 
-	if (ask_symbol(id)== -1){
-
+	if (ask_symbol(id) == -1){
 		table[index_table].id = id;
 		table[index_table].is_constant = is_cons;
 		table[index_table].is_init = is_init;
 		table[index_table].depth = global_depth;
 
 		index_table ++;
+
 	}else{
 		printf("ERREUR SYMBOLE DEJA EXISTANT");
 	}

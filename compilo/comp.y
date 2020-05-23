@@ -59,7 +59,7 @@ Vide:
     ;
 
 Body:
-    tCBrO {plus_depth();} Lines tCBrC {minus_depth();}
+    tCBrO {printf("test depth");} Lines tCBrC {printf("test depth");}
     ;
 
 
@@ -96,10 +96,10 @@ Decl:
     | tConst Vars { is_const = 1;};
 
 Vars:
-    tNom {add_symbol($1,is_const,0);}
-    | Aff {add_symbol(name_var,is_const,1);}
-    | tNom tComm {add_symbol($1,is_const,0);} Vars 
-    | Aff tComm {add_symbol(name_var,is_const,1);} Vars
+    tNom {printf("test nom");}
+    | Aff {printf("test aff");}
+    | tNom tComm {printf("test nom comm");} Vars 
+    | Aff tComm {printf("test aff comm");} Vars
     ;
 
 

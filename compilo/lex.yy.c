@@ -857,7 +857,7 @@ YY_RULE_SETUP
 #line 79 "comp.l"
 {
         printf("tNom\n");
-        yylval.str = yytext;
+        yylval.str = strdup(yytext);
         return tNom ;
 
         }    

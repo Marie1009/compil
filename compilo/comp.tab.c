@@ -1276,19 +1276,19 @@ yyreduce:
     {
         case 5:
 #line 62 "comp.y" /* yacc.c:1646  */
-    {plus_depth();}
+    {printf("test depth");}
 #line 1281 "comp.tab.c" /* yacc.c:1646  */
     break;
 
   case 6:
 #line 62 "comp.y" /* yacc.c:1646  */
-    {minus_depth();}
+    {printf("test depth");}
 #line 1287 "comp.tab.c" /* yacc.c:1646  */
     break;
 
   case 12:
 #line 78 "comp.y" /* yacc.c:1646  */
-    {strcpy(name_var,(yyvsp[-2].str));  printf("affectation\n");}
+    {  printf("affectation\n");}
 #line 1293 "comp.tab.c" /* yacc.c:1646  */
     break;
 
@@ -1348,25 +1348,25 @@ yyreduce:
 
   case 23:
 #line 99 "comp.y" /* yacc.c:1646  */
-    {add_symbol((yyvsp[0].str),is_const,0);}
+    {printf("test nom");}
 #line 1353 "comp.tab.c" /* yacc.c:1646  */
     break;
 
   case 24:
 #line 100 "comp.y" /* yacc.c:1646  */
-    {add_symbol(name_var,is_const,1);}
+    {printf("test aff");}
 #line 1359 "comp.tab.c" /* yacc.c:1646  */
     break;
 
   case 25:
 #line 101 "comp.y" /* yacc.c:1646  */
-    {add_symbol((yyvsp[-1].str),is_const,0);}
+    {printf("test nom comm");}
 #line 1365 "comp.tab.c" /* yacc.c:1646  */
     break;
 
   case 27:
 #line 102 "comp.y" /* yacc.c:1646  */
-    {add_symbol(name_var,is_const,1);}
+    {printf("test aff comm");}
 #line 1371 "comp.tab.c" /* yacc.c:1646  */
     break;
 

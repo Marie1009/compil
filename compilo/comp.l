@@ -78,7 +78,7 @@ Main    main\(\)
 
 {Name}   {
         printf("tNom\n");
-        yylval.str = yytext;
+        yylval.str = strdup(yytext);
         return tNom ;
 
         }    

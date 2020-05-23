@@ -6,6 +6,8 @@ typedef struct {
 	int depth;
 }symbol;
 
+void init();
+
 int check_init(int ad);
 int get_address(char * id);
 
