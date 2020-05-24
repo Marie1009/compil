@@ -64,7 +64,13 @@ extern int yydebug;
     tTAB = 274,
     tSpace = 275,
     tNL = 276,
-    tEndL = 277
+    tEndL = 277,
+    tIf = 278,
+    tWhile = 279,
+    tElse = 280,
+    tEqu = 281,
+    tInf = 282,
+    tSup = 283
   };
 #endif
 
@@ -73,13 +79,13 @@ extern int yydebug;
 
 union YYSTYPE
 {
-#line 24 "inter.y" /* yacc.c:1909  */
+#line 25 "inter.y" /* yacc.c:1909  */
 
             char *str;
             int nb;
         
 
-#line 83 "inter.tab.h" /* yacc.c:1909  */
+#line 89 "inter.tab.h" /* yacc.c:1909  */
 };
 
 typedef union YYSTYPE YYSTYPE;

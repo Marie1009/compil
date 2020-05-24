@@ -16,7 +16,7 @@ Name     {Let}({Let}|{Digit}|_)*
 Main    main\(\)
 
 %{
-    #include "comp.tab.h"
+    #include "inter.tab.h"
 %}
 
 %%
@@ -44,6 +44,21 @@ Main    main\(\)
         return tEq;
     }
 
+"==" { 
+        printf("tEqu\n"); 
+        return tEqu;
+    }
+
+"<" { 
+        printf("tInf\n"); 
+        return tInf;
+    }
+
+">" { 
+        printf("tSup\n"); 
+        return tSup;
+    }
+
 "(" {
         printf("tBrO\n");
         return tBrO;
@@ -62,6 +77,8 @@ Main    main\(\)
         return tCBrC ;
     }
 
+
+
 "const" {
         printf("tConst\n");
         return tConst ;
@@ -75,6 +92,21 @@ Main    main\(\)
             printf("tPri\n"); 
             return tPri;
         }
+"while" {
+        printf("tWhile");
+        return tWhile;
+        }
+"if" { 
+        printf("tIf\n"); 
+           return tIf;
+      }
+
+"else" { 
+        printf("tElse\n"); 
+        return tElse;
+    }
+
+
 
 {Name}   {
         printf("tNom\n");

@@ -24,6 +24,7 @@ void init(){
 }
 
 int check_init(int ad){
+	printf("%d",ad);
 	if(ad == -1){
 		return -1;
 	}else{
@@ -47,12 +48,9 @@ int get_address(char *id){
 
 int ask_symbol(char *id){
 	int i=0;
-
-
-
-	while ((strcmp(table[i].id,id)!=0 || table[i].depth != global_depth) && i< index_table ){
-		i ++;
-		
+	printf("coucou ask symbol\n");
+	while ((strcmp(table[i].id,id)!=0 || table[i].depth > global_depth) && i< index_table ){
+		i ++;	
 	}
 	if (i == index_table){
 		
@@ -64,13 +62,14 @@ int ask_symbol(char *id){
 }
 
 void add_symbol(char *id, int is_cons, int is_init ){
-
+	printf("coucou add symbol\n");
 	if (ask_symbol(id) == -1){
 		table[index_table].id = id;
 		table[index_table].is_constant = is_cons;
 		table[index_table].is_init = is_init;
 		table[index_table].depth = global_depth;
 
+		printf("%d",global_depth);
 		index_table ++;
 
 	}else{
@@ -95,7 +94,7 @@ void minus_depth(){
 
 int pop(){
 	point_temp --;
-	return point_temp + 1000;
+	return point_temp + 1001;
 }
 
 int push(){
