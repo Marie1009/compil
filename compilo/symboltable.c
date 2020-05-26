@@ -48,7 +48,7 @@ int get_address(char *id){
 
 int ask_symbol(char *id){
 	int i=0;
-	printf("coucou ask symbol\n");
+	//printf("coucou ask symbol\n");
 	while ((strcmp(table[i].id,id)!=0 || table[i].depth > global_depth) && i< index_table ){
 		i ++;	
 	}
@@ -62,7 +62,7 @@ int ask_symbol(char *id){
 }
 
 void add_symbol(char *id, int is_cons, int is_init ){
-	printf("coucou add symbol\n");
+	//printf("coucou add symbol\n");
 	if (ask_symbol(id) == -1){
 		table[index_table].id = id;
 		table[index_table].is_constant = is_cons;

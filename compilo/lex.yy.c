@@ -888,7 +888,7 @@ case 16:
 YY_RULE_SETUP
 #line 95 "comp.l"
 {
-        printf("tWhile");
+        printf("tWhile\n");
         return tWhile;
         }
 	YY_BREAK

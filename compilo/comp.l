@@ -93,7 +93,7 @@ Main    main\(\)
             return tPri;
         }
 "while" {
-        printf("tWhile");
+        printf("tWhile\n");
         return tWhile;
         }
 "if" { 

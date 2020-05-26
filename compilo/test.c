@@ -1,9 +1,7 @@
 int main()
 {
-	int toto = 13;
-	int a = 5;
-	int b= 42;
-	while(toto){ 
-		toto = 12;
+	int toto = 5;
+	while(toto > 1){ 
+		toto = toto - 1;
 	}
 }
